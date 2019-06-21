@@ -7,10 +7,9 @@ import subprocess as sp
 
 def Resolve(path):
     print("Resampling the Image")
-    finalpath='resampledimage.png'
-    sp.getstatusoutput("convert "+path+" -resample 600 "+finalpath)
+    sp.getstatusoutput("convert "+path+" -resample 600 "+path)
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-    return pytesseract.image_to_string(Image.open(finalpath))
+    return pytesseract.image_to_string(Image.open(path))
 
 def DownloadImage(driver):
     with open('tempfile.png', 'wb') as file:

@@ -33,8 +33,14 @@ def StartWeb(url):
 
     #ResolveCaptcha
     captcha_text='{}'.format(Resolve('tempfile.png'))
-    print("Extracted text",captcha_text)  
+    print("Extracted text",captcha_text)
 
+    cp =driver.find_element_by_id("userEnteredCaptcha")
+    cp.clear()
+    cp.send_keys(captcha_text)
+    
+    #press enter key
+    cp.send_keys(Keys.ENTER)
 
 #Initialize Basic
 url=r'http://www.mca.gov.in/mcafoportal/viewCompanyMasterData.do'
